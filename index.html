@@ -1,0 +1,196 @@
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kiểm Tra Tồn Kho</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    </head>
+    <body>
+        <header class="print-header">
+            <div class="header-container">
+                <img src="banner.png" alt="Header Công Ty" class="header-img">
+            </div>
+        </header>
+        
+        
+        
+        <h1>Hệ Thống Kiểm Tra Tồn Kho</h1>
+        
+        <h1>ĐƠN HÀNG</h1>
+        
+        <div id="search-module">
+            <h2>Tìm Kiếm Sản Phẩm</h2>
+            <input type="text" id="search-box" placeholder="Nhập tên hoặc mã sản phẩm..." oninput="showSuggestions()">
+            <div id="suggestions"></div>
+        </div>
+        
+        <div id="order-module">
+            <h2>Thông Tin Khách Hàng</h2>
+            <div id="customer-info">
+                <label for="customer-name">Họ tên khách:</label>
+                <input type="text" id="customer-name" placeholder="Nhập họ tên khách">
+                <label for="customer-address">Địa chỉ:</label>
+                <input type="text" id="customer-address" placeholder="Nhập địa chỉ khách">
+                <label for="customer-phone">Số điện thoại:</label>
+                <input type="text" id="customer-phone" placeholder="Nhập số điện thoại khách">
+                <label for="customer-note">Ghi chú:</label>
+                <textarea id="customer-note" placeholder="Ghi chú thêm về đơn hàng"></textarea>
+            </div>
+            
+            <h2>Chi Tiết Đơn Hàng</h2>
+            <div id="order-container">
+                <table id="order-table">
+                    <thead>
+                        <tr>
+                            <th>Mã Hàng</th>
+                            <th>Tên hàng</th>
+                            <th>Tồn Kho</th>
+                            <th>Giá đơn vị</th>
+                            <th>Đơn vị tính</th>
+                            <th>Số lượng</th>
+                            <th>Chiết khấu (%)</th>
+                            <th>Tạm tổng</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <h3>Tổng chiết khấu: <span id="discount-total">0%</span></h3>
+                <h3>Tổng: <span id="grand-total">0</span></h3>
+            </div>
+            <button id="order-btn">Xác Nhận Đơn Hàng</button>
+        </div>
+        
+        
+        <script>
+            const sheetUrl = "https://docs.google.com/spreadsheets/d/1BsZP5WmVguT5cxUwvGqhFxlfLj0FsHKeuQCSKD0stK0/gviz/tq?tqx=out:json";
+            let inventory = [];
+        
+            function formatCurrency(value) {
+                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+            }
+        
+            async function fetchInventoryData() {
+                try {
+                    const response = await fetch(sheetUrl);
+                    const text = await response.text();
+                    const jsonData = JSON.parse(text.substr(47).slice(0, -2));
+        
+                    inventory = jsonData.table.rows.map(row => {
+                        return {
+                            id: row.c[0]?.v || "",
+                            name: row.c[1]?.v || "",
+                            stock: row.c[2]?.v || 0,
+                            price: parseFloat(row.c[3]?.v) || 0,
+                            unit: row.c[4]?.v || ""
+                        };
+                    });
+                } catch (error) {
+                    console.error("Lỗi khi lấy dữ liệu từ Google Sheets:", error);
+                }
+            }
+        
+            document.addEventListener("DOMContentLoaded", fetchInventoryData);
+        
+            function showSuggestions() {
+                const query = document.getElementById("search-box").value.toLowerCase();
+                const suggestionsDiv = document.getElementById("suggestions");
+                suggestionsDiv.innerHTML = "";
+        
+                if (query.length > 0 && inventory.length > 0) {
+                    const filteredResults = inventory.filter(item => 
+                        item.id.includes(query) || item.name.toLowerCase().includes(query)
+                    ).slice(0, 5);
+        
+                    filteredResults.forEach(item => {
+                        const suggestionItem = document.createElement("div");
+                        suggestionItem.classList.add("suggestion-item");
+                        suggestionItem.innerHTML = `${item.id} - ${item.name} (${formatCurrency(item.price)})`;
+                        suggestionItem.onclick = () => addToOrder(item);
+                        suggestionsDiv.appendChild(suggestionItem);
+                    });
+                }
+            }
+        
+            function addToOrder(item) {
+                const orderTable = document.getElementById('order-table').getElementsByTagName('tbody')[0];
+                const row = orderTable.insertRow();
+                
+                row.innerHTML = `
+                    <td>${item.id}</td>
+                    <td>${item.name}</td>
+                    <td>${item.stock}</td>
+                    <td data-price="${item.price}">${formatCurrency(item.price)}</td>
+                    <td>${item.unit}</td>
+                    <td><input type="number" min="1" value="1" oninput="updateTotals()"></td>
+                    <td><input type="number" min="0" value="0" oninput="updateTotals()"></td>
+                    <td class="subtotal">0</td>
+                    <td><button onclick="removeItem(this)">Xóa</button></td>
+                `;
+        
+                document.getElementById("suggestions").innerHTML = "";
+                updateTotals();
+            }
+        
+            function removeItem(button) {
+                const row = button.parentElement.parentElement;
+                row.remove();
+                updateTotals();
+            }
+        
+            function updateTotals() {
+                let grandTotal = 0;
+                let discountTotal = 0;
+                const rows = document.querySelectorAll("#order-table tbody tr");
+        
+                rows.forEach(row => {
+                    const price = parseFloat(row.cells[3].getAttribute("data-price"));
+                    const amount = parseInt(row.cells[5].querySelector("input").value) || 0;
+                    const discountPercent = parseFloat(row.cells[6].querySelector("input").value) || 0;
+                    const discount = (amount * price) * (discountPercent / 100);
+                    const subtotal = (amount * price) - discount;
+                    row.cells[7].innerText = formatCurrency(subtotal);
+        
+                    discountTotal += discountPercent;
+                    grandTotal += subtotal;
+                });
+        
+                document.getElementById("discount-total").innerText = discountTotal.toFixed(2) + "%";
+                document.getElementById("grand-total").innerText = formatCurrency(grandTotal);
+            }
+        
+            document.getElementById('order-btn').addEventListener('click', function() {
+                let customerName = document.getElementById("customer-name").value.trim();
+                let fileName = customerName ? `${customerName}_order.png` : "order.png";
+        
+                const printHeader = document.querySelector('.print-header');
+                printHeader.style.display = 'block';
+        
+                html2canvas(document.body, {
+                    useCORS: true,
+                    allowTaint: true,
+                    logging: true,
+                    scale: 2
+                }).then(canvas => {
+                    let link = document.createElement('a');
+                    link.href = canvas.toDataURL("image/png");
+                    link.download = fileName;
+                    link.click();
+                });
+        
+                // Reset đơn hàng sau khi xác nhận
+                document.getElementById('order-table').getElementsByTagName('tbody')[0].innerHTML = "";
+                document.getElementById('search-box').value = "";
+                document.getElementById('suggestions').innerHTML = "";
+                document.getElementById("discount-total").innerText = "0%";
+                document.getElementById("grand-total").innerText = "0";
+                alert("Đơn hàng đã được xác nhận và lưu dưới dạng ảnh!");
+            });
+        </script>
+        
+        
+    </body>
+    </html>
