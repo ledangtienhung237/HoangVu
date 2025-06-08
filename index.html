@@ -1,196 +1,260 @@
-    <!DOCTYPE html>
-    <html lang="vi">
-    <head>
-        <link rel="stylesheet" href="style.css">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Kiểm Tra Tồn Kho</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    
-    </head>
-    <body>
-        <header class="print-header">
-            <div class="header-container">
-                <img src="banner.png" alt="Header Công Ty" class="header-img">
-            </div>
-        </header>
-        
-        
-        
-        <h1>Hệ Thống Kiểm Tra Tồn Kho</h1>
-        
-        <h1>ĐƠN HÀNG</h1>
-        
-        <div id="search-module">
-            <h2>Tìm Kiếm Sản Phẩm</h2>
-            <input type="text" id="search-box" placeholder="Nhập tên hoặc mã sản phẩm..." oninput="showSuggestions()">
-            <div id="suggestions"></div>
-        </div>
-        
-        <div id="order-module">
-            <h2>Thông Tin Khách Hàng</h2>
-            <div id="customer-info">
-                <label for="customer-name">Họ tên khách:</label>
-                <input type="text" id="customer-name" placeholder="Nhập họ tên khách">
-                <label for="customer-address">Địa chỉ:</label>
-                <input type="text" id="customer-address" placeholder="Nhập địa chỉ khách">
-                <label for="customer-phone">Số điện thoại:</label>
-                <input type="text" id="customer-phone" placeholder="Nhập số điện thoại khách">
-                <label for="customer-note">Ghi chú:</label>
-                <textarea id="customer-note" placeholder="Ghi chú thêm về đơn hàng"></textarea>
-            </div>
-            
-            <h2>Chi Tiết Đơn Hàng</h2>
-            <div id="order-container">
-                <table id="order-table">
-                    <thead>
-                        <tr>
-                            <th>Mã Hàng</th>
-                            <th>Tên hàng</th>
-                            <th>Tồn Kho</th>
-                            <th>Giá đơn vị</th>
-                            <th>Đơn vị tính</th>
-                            <th>Số lượng</th>
-                            <th>Chiết khấu (%)</th>
-                            <th>Tạm tổng</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <h3>Tổng chiết khấu: <span id="discount-total">0%</span></h3>
-                <h3>Tổng: <span id="grand-total">0</span></h3>
-            </div>
-            <button id="order-btn">Xác Nhận Đơn Hàng</button>
-        </div>
-        
-        
-        <script>
-            const sheetUrl = "https://docs.google.com/spreadsheets/d/1BsZP5WmVguT5cxUwvGqhFxlfLj0FsHKeuQCSKD0stK0/gviz/tq?tqx=out:json";
-            let inventory = [];
-        
-            function formatCurrency(value) {
-                return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
-            }
-        
-            async function fetchInventoryData() {
-                try {
-                    const response = await fetch(sheetUrl);
-                    const text = await response.text();
-                    const jsonData = JSON.parse(text.substr(47).slice(0, -2));
-        
-                    inventory = jsonData.table.rows.map(row => {
-                        return {
-                            id: row.c[0]?.v || "",
-                            name: row.c[1]?.v || "",
-                            stock: row.c[2]?.v || 0,
-                            price: parseFloat(row.c[3]?.v) || 0,
-                            unit: row.c[4]?.v || ""
-                        };
-                    });
-                } catch (error) {
-                    console.error("Lỗi khi lấy dữ liệu từ Google Sheets:", error);
-                }
-            }
-        
-            document.addEventListener("DOMContentLoaded", fetchInventoryData);
-        
-            function showSuggestions() {
-                const query = document.getElementById("search-box").value.toLowerCase();
-                const suggestionsDiv = document.getElementById("suggestions");
-                suggestionsDiv.innerHTML = "";
-        
-                if (query.length > 0 && inventory.length > 0) {
-                    const filteredResults = inventory.filter(item => 
-                        item.id.includes(query) || item.name.toLowerCase().includes(query)
-                    ).slice(0, 5);
-        
-                    filteredResults.forEach(item => {
-                        const suggestionItem = document.createElement("div");
-                        suggestionItem.classList.add("suggestion-item");
-                        suggestionItem.innerHTML = `${item.id} - ${item.name} (${formatCurrency(item.price)})`;
-                        suggestionItem.onclick = () => addToOrder(item);
-                        suggestionsDiv.appendChild(suggestionItem);
-                    });
-                }
-            }
-        
-            function addToOrder(item) {
-                const orderTable = document.getElementById('order-table').getElementsByTagName('tbody')[0];
-                const row = orderTable.insertRow();
-                
-                row.innerHTML = `
-                    <td>${item.id}</td>
-                    <td>${item.name}</td>
-                    <td>${item.stock}</td>
-                    <td data-price="${item.price}">${formatCurrency(item.price)}</td>
-                    <td>${item.unit}</td>
-                    <td><input type="number" min="1" value="1" oninput="updateTotals()"></td>
-                    <td><input type="number" min="0" value="0" oninput="updateTotals()"></td>
-                    <td class="subtotal">0</td>
-                    <td><button onclick="removeItem(this)">Xóa</button></td>
-                `;
-        
-                document.getElementById("suggestions").innerHTML = "";
-                updateTotals();
-            }
-        
-            function removeItem(button) {
-                const row = button.parentElement.parentElement;
-                row.remove();
-                updateTotals();
-            }
-        
-            function updateTotals() {
-                let grandTotal = 0;
-                let discountTotal = 0;
-                const rows = document.querySelectorAll("#order-table tbody tr");
-        
-                rows.forEach(row => {
-                    const price = parseFloat(row.cells[3].getAttribute("data-price"));
-                    const amount = parseInt(row.cells[5].querySelector("input").value) || 0;
-                    const discountPercent = parseFloat(row.cells[6].querySelector("input").value) || 0;
-                    const discount = (amount * price) * (discountPercent / 100);
-                    const subtotal = (amount * price) - discount;
-                    row.cells[7].innerText = formatCurrency(subtotal);
-        
-                    discountTotal += discountPercent;
-                    grandTotal += subtotal;
-                });
-        
-                document.getElementById("discount-total").innerText = discountTotal.toFixed(2) + "%";
-                document.getElementById("grand-total").innerText = formatCurrency(grandTotal);
-            }
-        
-            document.getElementById('order-btn').addEventListener('click', function() {
-                let customerName = document.getElementById("customer-name").value.trim();
-                let fileName = customerName ? `${customerName}_order.png` : "order.png";
-        
-                const printHeader = document.querySelector('.print-header');
-                printHeader.style.display = 'block';
-        
-                html2canvas(document.body, {
-                    useCORS: true,
-                    allowTaint: true,
-                    logging: true,
-                    scale: 2
-                }).then(canvas => {
-                    let link = document.createElement('a');
-                    link.href = canvas.toDataURL("image/png");
-                    link.download = fileName;
-                    link.click();
-                });
-        
-                // Reset đơn hàng sau khi xác nhận
-                document.getElementById('order-table').getElementsByTagName('tbody')[0].innerHTML = "";
-                document.getElementById('search-box').value = "";
-                document.getElementById('suggestions').innerHTML = "";
-                document.getElementById("discount-total").innerText = "0%";
-                document.getElementById("grand-total").innerText = "0";
-                alert("Đơn hàng đã được xác nhận và lưu dưới dạng ảnh!");
-            });
-        </script>
-        
-        
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Báo Giá</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      margin: 0;
+    }
+    h2 {
+      text-align: center;
+    }
+    #product-search {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 12px;
+      box-sizing: border-box;
+    }
+    ul#search-results {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      background: #fff;
+      border: 1px solid #ccc;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    ul#search-results li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    ul#search-results li:hover {
+      background: #f0f0f0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    td input {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 16px;
+      margin-top: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    label, strong {
+      display: block;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    @media screen and (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+      thead {
+        display: none;
+      }
+      tr {
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 6px;
+      }
+      td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 6px 0;
+      }
+      td:before {
+        content: attr(data-label);
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align:center; margin-bottom: 10px;">
+    <img src="logo.png" alt="Logo công ty" style="max-width: 150px; height: auto;">
+  </div>
+  <h2>Bảng Báo Giá</h2>
+  <input type="text" id="product-search" placeholder="Tìm sản phẩm...">
+  <ul id="search-results"></ul>
+  <table id="quote-table">
+    <thead>
+      <tr>
+        <th>Tên sản phẩm</th>
+        <th>Đơn giá</th>
+        <th>Số lượng</th>
+        <th>Chiết khấu dòng (%)</th>
+        <th>Thành tiền</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="product-body"></tbody>
+  </table>
+
+  <button onclick="addRow()">➕ Thêm sản phẩm</button>
+
+  <label>Chiết khấu toàn đơn (%): <input id="order-discount" type="number" value="0"></label>
+  <strong>Tổng cộng: <span id="grand-total">0</span> đ</strong>
+
+  <script>
+    const defaultProducts = JSON.parse(localStorage.getItem('fullProductList')) || [];
+
+    const searchInput = document.getElementById('product-search');
+    const resultsList = document.getElementById('search-results');
+
+    searchInput.addEventListener('input', function () {
+      const keyword = this.value.toLowerCase();
+      resultsList.innerHTML = '';
+      if (keyword.length === 0) return;
+      const results = defaultProducts.filter(p => p.name.toLowerCase().includes(keyword));
+      results.forEach(product => {
+        const li = document.createElement('li');
+        li.textContent = `${product.name} - ${product.price.toLocaleString('vi-VN')} đ`;
+        li.style.cursor = 'pointer';
+        li.onclick = () => {
+          addProductToTable(product);
+          resultsList.innerHTML = '';
+          searchInput.value = '';
+        };
+        resultsList.appendChild(li);
+      });
+    });
+
+    function addProductToTable(product) {
+      const tbody = document.getElementById("product-body");
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td data-label="Tên"><input type="text" value="${product.name}"></td>
+        <td data-label="Đơn giá"><input type="number" value="${product.price}"></td>
+        <td data-label="Số lượng"><input type="number" value="1"></td>
+        <td data-label="Chiết khấu"><input type="number" value="0"></td>
+        <td class="line-total" data-label="Thành tiền"></td>
+        <td data-label="Xóa"><button onclick="removeRow(this)">🗑️</button></td>
+      `;
+      tbody.appendChild(row);
+      row.querySelectorAll('input').forEach(input => input.addEventListener('input', updateTotals));
+      updateTotals();
+    }
+
+    function updateTotals() {
+      let total = 0;
+      const rows = document.querySelectorAll('#quote-table tbody tr');
+      rows.forEach(row => {
+        const price = parseFloat(row.cells[1].querySelector('input').value || 0);
+        const qty = parseInt(row.cells[2].querySelector('input').value || 0);
+        const discount = parseFloat(row.cells[3].querySelector('input').value || 0);
+        const lineTotal = price * qty * (1 - discount / 100);
+        row.cells[4].innerText = lineTotal.toLocaleString('vi-VN');
+        total += lineTotal;
+      });
+      const orderDiscount = parseFloat(document.getElementById('order-discount').value || 0);
+      total *= (1 - orderDiscount / 100);
+      document.getElementById('grand-total').innerText = total.toLocaleString('vi-VN');
+    }
+
+    function addRow() {
+      const tbody = document.querySelector('#quote-table tbody');
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td data-label="Tên"><input type="text"></td>
+        <td data-label="Đơn giá"><input type="number" value="0"></td>
+        <td data-label="Số lượng"><input type="number" value="1"></td>
+        <td data-label="Chiết khấu"><input type="number" value="0"></td>
+        <td class="line-total" data-label="Thành tiền"></td>
+        <td data-label="Xóa"><button onclick="removeRow(this)">🗑️</button></td>
+      `;
+      tbody.appendChild(row);
+      row.querySelectorAll('input').forEach(input => input.addEventListener('input', updateTotals));
+      updateTotals();
+    }
+
+    function removeRow(btn) {
+      btn.closest('tr').remove();
+      updateTotals();
+    }
+
+    document.getElementById('order-discount').addEventListener('input', updateTotals);
+
+    fetch('full_product_list.json')
+      .then(res => res.json())
+      .then(data => {
+        localStorage.setItem('fullProductList', JSON.stringify(data));
+        defaultProducts.push(...data);
+      });
+  </script>
+<div style="margin-top: 20px;">
+  <h3>Xuất đơn hàng ra văn bản</h3>
+  <label>Khách hàng: <input id="customer-name" type="text" placeholder="Tên khách hàng" style="width:100%"></label><br>
+  <label>Địa chỉ: <input id="customer-address" type="text" placeholder="Địa chỉ" style="width:100%"></label><br>
+  <label>SĐT: <input id="customer-phone" type="text" placeholder="Số điện thoại" style="width:100%"></label><br>
+  <button onclick="exportText()">📄 Xuất ra văn bản</button>
+  <button onclick="copyExportText()">📋 Sao chép</button>
+  <pre id="export-output" style="white-space: pre-wrap; background:#f4f4f4; padding:10px; margin-top:10px;"></pre>
+</div>
+
+<script>
+  function exportText() {
+    const name = document.getElementById('customer-name').value;
+    const address = document.getElementById('customer-address').value;
+    const phone = document.getElementById('customer-phone').value;
+
+    let text = `Tên khách hàng: ${name}
+Địa chỉ: ${address}
+Sđt: ${phone}
+
+`;
+    const rows = document.querySelectorAll('#quote-table tbody tr');
+    rows.forEach((row, index) => {
+      const ten = row.cells[0].querySelector('input').value;
+      const dongia = parseFloat(row.cells[1].querySelector('input').value || 0).toLocaleString('vi-VN');
+      const sl = row.cells[2].querySelector('input').value;
+      const ck = row.cells[3].querySelector('input').value;
+      const tt = row.cells[4].innerText;
+      text += `${index + 1}. ${ten}
+   Đơn giá: ${dongia} đ | SL: ${sl} | CK: ${ck}% | Thành tiền: ${tt} đ
+`;
+    });
+
+    const giam = document.getElementById('order-discount').value;
+    const tong = document.getElementById('grand-total').innerText;
+    text += `
+Chiết khấu toàn đơn: ${giam}%
+Tổng cộng: ${tong} đ`;
+
+    document.getElementById('export-output').innerText = text;
+  }
+  function copyExportText() {
+  const text = document.getElementById('export-output').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    alert('Đã sao chép vào clipboard!');
+  }, err => {
+    alert('Không thể sao chép. Vui lòng thử lại.');
+  });
+}
+</script>
+</body>
+</html>
