@@ -213,7 +213,8 @@
   <label>SĐT: <input id="customer-phone" type="text" placeholder="Số điện thoại" style="width:100%"></label><br>
   <button onclick="exportText()">📄 Xuất ra văn bản</button>
   <button onclick="copyExportText()">📋 Sao chép</button>
-  <pre id="export-output" style="white-space: pre-wrap; background:#f4f4f4; padding:10px; margin-top:10px;"></pre>
+  <div id="export-output" style="white-space: pre-wrap; background:#f4f4f4; padding:10px; margin-top:10px;"></div>
+
 </div>
 
 <script>
@@ -255,6 +256,64 @@ Tổng cộng: ${tong} đ`;
     alert('Không thể sao chép. Vui lòng thử lại.');
   });
 }
+  function exportTable() {
+  const name = document.getElementById('customer-name').value;
+  const address = document.getElementById('customer-address').value;
+  const phone = document.getElementById('customer-phone').value;
+  const giam = document.getElementById('order-discount').value;
+  const tong = document.getElementById('grand-total').innerText;
+
+  let html = `
+    <strong>Tên khách hàng:</strong> ${name}<br>
+    <strong>Địa chỉ:</strong> ${address}<br>
+    <strong>SĐT:</strong> ${phone}<br><br>
+
+    <table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; width:100%; font-size:14px;">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Tên sản phẩm</th>
+          <th>Đơn giá (đ)</th>
+          <th>Số lượng</th>
+          <th>Chiết khấu (%)</th>
+          <th>Thành tiền (đ)</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  const rows = document.querySelectorAll('#quote-table tbody tr');
+  rows.forEach((row, index) => {
+    const ten = row.cells[0].querySelector('input').value;
+    const dongia = parseFloat(row.cells[1].querySelector('input').value || 0).toLocaleString('vi-VN');
+    const sl = row.cells[2].querySelector('input').value;
+    const ck = row.cells[3].querySelector('input').value;
+    const tt = row.cells[4].innerText;
+
+    html += `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${ten}</td>
+        <td>${dongia}</td>
+        <td>${sl}</td>
+        <td>${ck}</td>
+        <td>${tt}</td>
+      </tr>
+    `;
+  });
+
+  html += `
+      </tbody>
+    </table><br>
+    <strong>Chiết khấu toàn đơn:</strong> ${giam}%<br>
+    <strong>Tổng cộng:</strong> ${tong} đ
+  `;
+
+  document.getElementById('export-output').innerHTML = html;
+}
+
 </script>
+  <button onclick="exportTable()">🧾 Xuất bảng báo giá cho khách hàng</button>
+
 </body>
 </html>
