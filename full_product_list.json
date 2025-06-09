@@ -1,246 +1,1110 @@
 [
   {
-    "name": "Mắc cài sứ Clarity Advance (20 cái/bộ)",
-    "price": 5467000
+    "name": "804-152 Cây ấn dây SmartClip slot .022",
+    "price": 7500000
   },
   {
-    "name": "Clarity Advance APC Flash Free (20 cái/bộ)",
-    "price": 6618000
+    "name": "007-100 M/cài sứ Clarity SL 20 cái, 018",
+    "price": 9990000
   },
   {
-    "name": "Mắc cài sứ Clarity Advance (6 cái/bộ)",
-    "price": 1900000
-  },
-  {
-    "name": "Mắc cài sứ Clarity Advance (10 cái/bộ)",
-    "price": 3020000
-  },
-  {
-    "name": "Mắc cài sứ Clarity Advance (12 cái/bộ)",
-    "price": 3850000
-  },
-  {
-    "name": "Clarity Ultra APC Flash Free",
-    "price": 10234000
-  },
-  {
-    "name": "Smartclip SL3 APC Flash Free",
-    "price": 5797000
-  },
-  {
-    "name": "Gemini Clear U/L (20 cái/bộ)",
-    "price": 3890000
-  },
-  {
-    "name": "Victory Series Twin MBT",
-    "price": 1558000
-  },
-  {
-    "name": "Victory Series Low Profile",
-    "price": 1668000
-  },
-  {
-    "name": "Gemini Twin MBT",
-    "price": 1268000
-  },
-  {
-    "name": "SmartClip MBT",
-    "price": 4588000
-  },
-  {
-    "name": "Thun đơn AlastiK ETT 45 độ",
-    "price": 772000
-  },
-  {
-    "name": "Thun buộc mắc cài QuiKStiK 0 độ",
-    "price": 803000
-  },
-  {
-    "name": "Thun chuỗi AlastiK Chain Bobbin",
-    "price": 704000
-  },
-  {
-    "name": "Dây tròn Nitinol SE",
-    "price": 550000
-  },
-  {
-    "name": "Dây Niti Ovoid Smartclip CL 012",
-    "price": 570000
-  },
-  {
-    "name": "Dây Vuông Nitinol SE",
-    "price": 543000
-  },
-  {
-    "name": "Dây tròn Stainless Steel",
-    "price": 265000
-  },
-  {
-    "name": "Dây vuông Stainless Steel",
-    "price": 265000
-  },
-  {
-    "name": "Dây cung thẳng SS",
-    "price": 917000
-  },
-  {
-    "name": "Dây cong ngược SE Reverse",
-    "price": 1130000
-  },
-  {
-    "name": "Dây phát triển sang bên Niti",
-    "price": 1126000
-  },
-  {
-    "name": "Dây phát triển Niti BETA",
-    "price": 2377000
-  },
-  {
-    "name": "Dây nhiệt HA Nitinol",
-    "price": 632000
-  },
-  {
-    "name": "Sáp chỉnh nha Wax Pak",
-    "price": 3540000
-  },
-  {
-    "name": "Forsus EZ2 ngắn 5 bệnh nhân",
-    "price": 8368000
-  },
-  {
-    "name": "Keo dán Transbond XT",
-    "price": 2805000
-  },
-  {
-    "name": "Keo dán Transbond XT (4 tubes)",
-    "price": 4546000
-  },
-  {
-    "name": "Dung dịch tự soi mòn Transbond XT Plus",
-    "price": 840000
-  },
-  {
-    "name": "Composite QTH Z250 - 4g",
-    "price": 525000
-  },
-  {
-    "name": "Composite Z250XT - 3g",
-    "price": 397000
-  },
-  {
-    "name": "Composite Z250 nhộng",
-    "price": 642000
-  },
-  {
-    "name": "Composite Z350XT - 4g",
-    "price": 876000
-  },
-  {
-    "name": "Filtek Sup Flow",
-    "price": 895000
-  },
-  {
-    "name": "Filtek Easy Match - 4g",
-    "price": 850000
-  },
-  {
-    "name": "Filtek Easy Match Kit (3 màu)",
-    "price": 2450000
-  },
-  {
-    "name": "Filtek Easy Match nhộng",
-    "price": 4091000
-  },
-  {
-    "name": "Composite răng sau P60",
-    "price": 562000
-  },
-  {
-    "name": "G.I Ketac Universal",
-    "price": 904000
-  },
-  {
-    "name": "Filtek One Bulk Fill",
+    "name": "4868A2 Vật Liệu Trám Răng Filtek™ One Bulk Fill, Màu A2",
     "price": 993000
   },
   {
-    "name": "Filtek Bulk Flow Lỏng",
-    "price": 1023000
+    "name": "4868A3 Vật Liệu Trám Răng Filtek™ One Bulk Fill, Màu A3",
+    "price": 993000
   },
   {
-    "name": "Protemp 4",
-    "price": 2245000
-  },
-  {
-    "name": "Single Bond 2",
-    "price": 1036000
-  },
-  {
-    "name": "Single Bond Universal",
-    "price": 1390000
-  },
-  {
-    "name": "Cao su lấy dấu loại nặng",
-    "price": 1328000
-  },
-  {
-    "name": "Cao su lấy dấu loại nhẹ",
-    "price": 1180000
-  },
-  {
-    "name": "Xi măng gắn sứ U200",
-    "price": 2405000
-  },
-  {
-    "name": "Xi măng RelyX Luting 2",
-    "price": 1293000
-  },
-  {
-    "name": "Xi măng Veneer RelyX",
-    "price": 1153000
-  },
-  {
-    "name": "Veneer Try-in paste",
-    "price": 884000
-  },
-  {
-    "name": "Ketac Cem Easy mix",
-    "price": 1187000
-  },
-  {
-    "name": "RelyX Ultimate",
-    "price": 1772000
-  },
-  {
-    "name": "RelyX Temp NE",
-    "price": 664000
-  },
-  {
-    "name": "Chốt sợi thủy tinh",
-    "price": 2215000
-  },
-  {
-    "name": "Mũi khoan chốt sợi",
-    "price": 630000
-  },
-  {
-    "name": "Mão răng sữa trẻ em",
+    "name": "Mão răng sữa D-LR-4",
     "price": 191000
   },
   {
-    "name": "Clinpro Sealant",
+    "name": "Mão răng sữa D-LL-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-LL-4",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-LL-5",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-LR-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-LR-5",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-UL-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-UL-5",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-UR-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-UR-4",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa D-UR-5",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-LL-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-LL-4",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-LL-5",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-LR-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-LR-4",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-LR-5",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-UL-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-UL-4",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-UL-5",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-UR-3",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-UR-4",
+    "price": 191000
+  },
+  {
+    "name": "Mão răng sữa E-UR-5",
+    "price": 191000
+  },
+  {
+    "name": "7302 Cao su lấy dấu loại nhẹ Express",
+    "price": 1180000
+  },
+  {
+    "name": "7018 B1B Composite QTH Z350 màu B1B 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7032A1 Vật Liệu Trám Dạng Lỏng Sup Flow Màu A1,2g*2",
+    "price": 895000
+  },
+  {
+    "name": "7032A2 Vật Liệu Trám Dạng Lỏng Sup Flow Màu A2,2g*2",
+    "price": 895000
+  },
+  {
+    "name": "7032A3 Vật Liệu Trám Dạng Lỏng Sup Flow Màu A3,2g*2",
+    "price": 895000
+  },
+  {
+    "name": "7032A3.5 Vật Liệu Trám Dạng Lỏng Sup Flow Màu A3.5,2g*2",
+    "price": 895000
+  },
+  {
+    "name": "017-873 M/cài R.Nanh Victory MBT ULt 022",
+    "price": 125000
+  },
+  {
+    "name": "017-874 M/cài R.Nanh Victory MBT URt 022",
+    "price": 125000
+  },
+  {
+    "name": "017-875 M/cài R.cửa Victory MBT ULt 022",
+    "price": 125000
+  },
+  {
+    "name": "017-876 M/cài R.cửa Victory MBT URt 022",
+    "price": 125000
+  },
+  {
+    "name": "017-877 M/cài Rcửa bên Victory MBT ULt022",
+    "price": 125000
+  },
+  {
+    "name": "017-878 M/cài Rcửa bên Victory MBT URt012",
+    "price": 125000
+  },
+  {
+    "name": "017-892 M/cài Răng trước VictoryLt/Rt 022",
+    "price": 125000
+  },
+  {
+    "name": "067-9154 Ống chỉnh nha số 7 Victory LRt 022",
+    "price": 128000
+  },
+  {
+    "name": "067-9163 Ống chỉnh nha số 7 Victory LLt 022",
+    "price": 128000
+  },
+  {
+    "name": "067-9193 Ống chỉnh nha số 6 Victory LLt 022",
+    "price": 128000
+  },
+  {
+    "name": "067-9204 Ống chỉnh nha số 6 Victory LRt 022",
+    "price": 128000
+  },
+  {
+    "name": "067-9571 Ống chỉnh nha số 7 Victory ULt 022",
+    "price": 128000
+  },
+  {
+    "name": "067-9582 Ống chỉnh nha số 7 Victory URt 022",
+    "price": 128000
+  },
+  {
+    "name": "300-020 dây SS Ovoid L 017x022",
+    "price": 265000
+  },
+  {
+    "name": "300-023 dây SS Ovoid U 018x022",
+    "price": 265000
+  },
+  {
+    "name": "300-024 dây SS Ovoid L 018x022",
+    "price": 265000
+  },
+  {
+    "name": "300-940 dây SS Post Ovoid U 019x025 40mm",
+    "price": 7500000
+  },
+  {
+    "name": "406-417 Thun buộc mắc cài màu trong",
+    "price": 803000
+  },
+  {
+    "name": "406-722 Thun buộc mắc cài màu bạc",
+    "price": 803000
+  },
+  {
+    "name": "406-407 Thun buộc mắc cài màu xám A1",
+    "price": 803000
+  },
+  {
+    "name": "4297-808 Dây Nitinol SE Square Dứoi 017x025",
+    "price": 7500000
+  },
+  {
+    "name": "4297-856Dây Niti OvoidCL017x022 hàm dưới",
+    "price": 7500000
+  },
+  {
+    "name": "4297-857Dây Niti OvoidCL017x025 hàm trên",
+    "price": 7500000
+  },
+  {
+    "name": "4297-921 Dây Nitinol nhiệt H/A Ovoid trên 017x025",
+    "price": 632000
+  },
+  {
+    "name": "4301-305 Dây Beta III Titanium 016x022 L Ovoid",
+    "price": 7500000
+  },
+  {
+    "name": "6400-215M/cài Clarity MBT 20 cái, 018",
+    "price": 7500000
+  },
+  {
+    "name": "900-710 kèm mỏ chim đầu thon uốn dây",
+    "price": 7500000
+  },
+  {
+    "name": "900-717 Kèm lấy chất gắn",
+    "price": 7500000
+  },
+  {
+    "name": "900-720 Kèm bẻ loop, max .021x.025",
+    "price": 7500000
+  },
+  {
+    "name": "902-188 Khâu trơn răng 6 ULt 44",
+    "price": 160000
+  },
+  {
+    "name": "902-274 Khâu trơn răng 6 URt 37",
+    "price": 160000
+  },
+  {
+    "name": "885-110 Forsus L-Pin 10/Pk",
+    "price": 7500000
+  },
+  {
+    "name": "068-9971 Ống chỉnh nha số 6 Victory ULt 022",
+    "price": 128000
+  },
+  {
+    "name": "068-9982 Ống chỉnh nha số 6 Victory URt 022",
+    "price": 128000
+  },
+  {
+    "name": "885-117 Forsus Push Rod XL 35mm",
+    "price": 7500000
+  },
+  {
+    "name": "004-339 M/cài Smartclip R.cối nhỏ thứ 1 L Lt",
+    "price": 290000
+  },
+  {
+    "name": "004-340 M/cài Smartclip R.cối nhỏ thứ 1 L Rt",
+    "price": 290000
+  },
+  {
+    "name": "004-347M/cài R.tiềncốiSmartclipMBTLLt022",
+    "price": 290000
+  },
+  {
+    "name": "004-348 M/cài Smartclip R.cối nhỏ thứ 2 L Rt",
+    "price": 290000
+  },
+  {
+    "name": "004-125 M/cài SmartClip 20 cái Slot 022 Hook345",
+    "price": 4588000
+  },
+  {
+    "name": "902-000 khâu trơn răng 6",
+    "price": 160000
+  },
+  {
+    "name": "4862 A3 Vật liệu trám Filtek Bulk Fill lỏng màu A3",
+    "price": 1023000
+  },
+  {
+    "name": "7032OA3 Vật Liệu Trám Dạng Lỏng Sup Flow Màu OA3,2g*2",
+    "price": 895000
+  },
+  {
+    "name": "712-091 Dung dịch tự soi mòn trước dính dán \nTransbond XT Plus 20/ kit\"",
+    "price": 840000
+  },
+  {
+    "name": "4004-124 Mắc cài Smartclip APC Flash Free, 0.22, U/L 5x5",
+    "price": 5797000
+  },
+  {
+    "name": "4003-111 Mắc cài Clarity Ultra APC Flash Free, 0.22, U/L 5x5",
+    "price": 10234000
+  },
+  {
+    "name": "4006-110 Mắc cài Clarity ADV APC Flash Free, 0.22, U/L 5x5",
+    "price": 6618000
+  },
+  {
+    "name": "Mắc cài Kirium MBT 018 Hook 3",
+    "price": 7500000
+  },
+  {
+    "name": "902W1 Khâu có ống, cleat răng 6 slot 022",
+    "price": 160000
+  },
+  {
+    "name": "905W1 Khâu có ống, cleat răng 7 slot 022",
+    "price": 160000
+  },
+  {
+    "name": "905W1 Khâu có ống, cleat răng 7 slot 018",
+    "price": 160000
+  },
+  {
+    "name": "902W2 Khâu 2 ống, cleat răng 6 slot 022",
+    "price": 160000
+  },
+  {
+    "name": "902W2 Khâu 2 ống, cleat răng 6 slot 018",
+    "price": 160000
+  },
+  {
+    "name": "902W2D Khâu 2 ống, răng 6 CL 018",
+    "price": 160000
+  },
+  {
+    "name": "902W2F Khâu 2 ống gắn Forsus răng 6 cleat 022",
+    "price": 160000
+  },
+  {
+    "name": "119-142 M/cài Gemini MBT, 20 cái, 022",
+    "price": 1268000
+  },
+  {
+    "name": "406-870 Thun buộc mắc cài 45độ màu trong",
+    "price": 772000
+  },
+  {
+    "name": "712-035 keo QTH Transbond XT dạng bộ",
+    "price": 2805000
+  },
+  {
+    "name": "603-063 sáp 100 thỏi/thùng",
+    "price": 3540000
+  },
+  {
+    "name": "12647 Chất trám bít hố rãnh",
     "price": 523000
   },
   {
-    "name": "Clinpro White Varnish",
-    "price": 2703000
+    "name": "61104 Vật liệu trám GI KETAC UNIVERSAL bột-nước A3",
+    "price": 904000
   },
   {
-    "name": "ClinproXT Fluor",
+    "name": "41282 Keo dán 1 bước Single Bond Universal",
+    "price": 1390000
+  },
+  {
+    "name": "56660 Xi măng gắn tạm RelyX Temp NE36g:16g",
+    "price": 664000
+  },
+  {
+    "name": "3525TKA Xi măng G.I Resin RelyX Luting 2",
+    "price": 1293000
+  },
+  {
+    "name": "1471 A3 Composite Z250 XT nhộng 20 viên",
+    "price": 642000
+  },
+  {
+    "name": "1471 A2 Composite Z250 XT nhộng 20 viên",
+    "price": 642000
+  },
+  {
+    "name": "7018A3E Composite QTH Z350 màu A3E 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A2E Composite QTH Z350 màu A2E 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 B2B Composite QTH Z350 màu B2B 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A4B Composite QTH Z350 màu A4B 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A3B Composite QTH Z350 màu A3 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A2B Composite QTH Z350 màu A2 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018A3D Composite QTH Z350 màu A3D 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018A2D Composite QTH Z350 màu A2D 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "12248 Vật liệu phủ bề mặt tiết fluor ClinproXT",
     "price": 2106000
   },
   {
-    "name": "Clinpro Tooth Crème",
+    "name": "1370 UD Composite QTH Z250 màu UD 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "1370 B3 Composite QTH Z250 màu B3 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "1370 B2 Composite QTH Z250 màu B2 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "1370 A4 Composite QTH Z250 màu A4 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "1370 A3.5 CompositeQTHZ250 màu A3.5 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "1370 A3 Composite QTH Z250 màu A3 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "1370 A2 Composite QTH Z250 màu A2 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "1370 A1 Composite QTH Z250 màu A1 4g/ống",
+    "price": 525000
+  },
+  {
+    "name": "8100 A3Composite răng sau P60 màu A3 4g/ống",
+    "price": 562000
+  },
+  {
+    "name": "51202 Keo dán Nano 2 bước Single Bond 2",
+    "price": 1036000
+  },
+  {
+    "name": "7614 TR Xi măng gắnVeneer RelyX màu TR",
+    "price": 1153000
+  },
+  {
+    "name": "7614 WO Xi măng gắn Veneer RelyX màu WO",
+    "price": 1153000
+  },
+  {
+    "name": "7614 A1 Xi măng gắn Veneer RelyX màu A1",
+    "price": 1153000
+  },
+  {
+    "name": "4931SF Đĩa đánh bóng Softlex Siêu Mịn",
+    "price": 231000
+  },
+  {
+    "name": "4931F Đĩa đánh bóng Softlex Mịn",
+    "price": 231000
+  },
+  {
+    "name": "4931M Đĩa đánh bóng Softlex Trung Bình",
+    "price": 231000
+  },
+  {
+    "name": "4931C Đĩa đánh bóng Softlex Thô",
+    "price": 231000
+  },
+  {
+    "name": "8100 B2Composite răng sau P60 màu B2 4g/ống",
+    "price": 562000
+  },
+  {
+    "name": "7312 Cao su lấy dấu loại nặng Express",
+    "price": 1328000
+  },
+  {
+    "name": "4296-122 Dây thẳng Nitinol CL,Hàm dưới 012",
+    "price": 626000
+  },
+  {
+    "name": "4296-121 Dây thẳng Nitinol CL,Hàm trên 012",
+    "price": 626000
+  },
+  {
+    "name": "004-104 M/cài SmartClip 20 cái Slot 018",
+    "price": 4588000
+  },
+  {
+    "name": "004-124 M/cài SmartClip 20 cái Slot 022",
+    "price": 4588000
+  },
+  {
+    "name": "119-144 M/cài GEMENI MBT SL 20 cái, 022, hook345",
+    "price": 1268000
+  },
+  {
+    "name": "406-888 Thun buộc mắc cài nhiều màu",
+    "price": 772000
+  },
+  {
+    "name": "406-884 Thun buộc mắc cài 45độ màu bạc",
+    "price": 772000
+  },
+  {
+    "name": "406-872 Thun buộc mắc cài 45độ màu khói",
+    "price": 772000
+  },
+  {
+    "name": "406-871 Thun buộc mắc cài 45độ màu xám",
+    "price": 772000
+  },
+  {
+    "name": "712-036 keo QTH Transbond XT 4cái/gói",
+    "price": 4546000
+  },
+  {
+    "name": "4297-962 Dây Nitinol SE hàm dưới 019x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-961 Dây Nitinol SE hàm trên 019x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-960 DâyNitinol SE hàm dưới 018x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-959 Dây Nitinol SE hàm trên 018x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-956 Dây Nitinol SE hàm dưới 017x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-956 Dây Nitinol SE hàm dưới 017x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-955 Dây Nitinol SE hàm trên 017x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-955 Dây Nitinol SE hàm trên 017x025",
+    "price": 543000
+  },
+  {
+    "name": "4297-954 Dây Nitinol SE hàm dưới 016x022",
+    "price": 543000
+  },
+  {
+    "name": "4297-953 Dây Nitinol SE hàm trên 016x022",
+    "price": 543000
+  },
+  {
+    "name": "4297-951 Dây Nitinol SE hàm trên 016x016",
+    "price": 543000
+  },
+  {
+    "name": "4297-952 Dây Nitinol SE hàm dưới 016x016",
+    "price": 543000
+  },
+  {
+    "name": "4296-916 Dây Nitinol SE Ovoid hàm dưới 018",
+    "price": 550000
+  },
+  {
+    "name": "4296-915 Dây Nitinol SE Ovoid hàm trên 018",
+    "price": 550000
+  },
+  {
+    "name": "4296-914 Dây Nitinol SE Ovoid hàm dưới 016",
+    "price": 550000
+  },
+  {
+    "name": "4296-913 Dây Nitinol SE Ovoid hàm trên 016",
+    "price": 550000
+  },
+  {
+    "name": "4296-912 Dây Nitinol SE Ovoid hàm dưới 014",
+    "price": 550000
+  },
+  {
+    "name": "4296-911 Dây Nitinol SE Ovoid hàm trên 014",
+    "price": 550000
+  },
+  {
+    "name": "406-692 Thun chuỗi màu bạc thưa",
+    "price": 704000
+  },
+  {
+    "name": "406-642 Thun chuỗi màu bạc khít",
+    "price": 704000
+  },
+  {
+    "name": "406-622 Thun chuỗi màu trong khít",
+    "price": 704000
+  },
+  {
+    "name": "406-621 Thun chuỗi màu xám khít",
+    "price": 704000
+  },
+  {
+    "name": "406-612 Thun chuỗi màu trong thưa",
+    "price": 704000
+  },
+  {
+    "name": "406-611 Thun chuỗi màu xám thưa",
+    "price": 704000
+  },
+  {
+    "name": "406-410 Thun tách kẻ màu xám răng trong",
+    "price": 1372000
+  },
+  {
+    "name": "404-636 thun kéo liên hàm, lực mạnh 6Oz 1/4\"",
+    "price": 615000
+  },
+  {
+    "name": "404-636 thun kéo liên hàm, lực mạnh 6Oz 1/4\"",
+    "price": 615000
+  },
+  {
+    "name": "404-626 thun kéo liên hàm, lực mạnh 6Oz 3/16\"",
+    "price": 615000
+  },
+  {
+    "name": "404-536 thun kéo liên hàm, lựcTB 4Oz 1/4\"",
+    "price": 615000
+  },
+  {
+    "name": "404-516 thun kéo liên hàm,lựcTB 4OZ 1/8\"",
+    "price": 615000
+  },
+  {
+    "name": "404-516 thun kéo liên hàm,lựcTB 4OZ 1/8\"",
+    "price": 615000
+  },
+  {
+    "name": "404-246 thun kéo lực TB nhẹ 3.5Oz 5/16\"",
+    "price": 615000
+  },
+  {
+    "name": "404-236 thun kéo lục TB nhẹ 3.5Oz 1/4\"",
+    "price": 615000
+  },
+  {
+    "name": "404-236 thun kéo lục TB nhẹ 3.5Oz 1/4\"",
+    "price": 615000
+  },
+  {
+    "name": "404-226 thun kéo lực TB nhẹ 3.5Oz 3/16\"",
+    "price": 615000
+  },
+  {
+    "name": "404-226 thun kéo lực TB nhẹ 3.5Oz 3/16\"",
+    "price": 615000
+  },
+  {
+    "name": "404-216 thun kéo lực TB nhẹ 3.5Oz 1/8\"",
+    "price": 615000
+  },
+  {
+    "name": "345-200 Lò xo mở Nitinol trung bình 7\"",
+    "price": 1168000
+  },
+  {
+    "name": "300-028 Dây SS Ovoid hàm dưới 019x025",
+    "price": 265000
+  },
+  {
+    "name": "300-027 Dây SS Ovoid hàm trên 019x025",
+    "price": 265000
+  },
+  {
+    "name": "300-026 Dây SS Ovoid hàm dưới 018x025",
+    "price": 265000
+  },
+  {
+    "name": "300-025 Dây SS Ovoid hàm trên 018x025",
+    "price": 265000
+  },
+  {
+    "name": "300-022 Dây SS Ovoid hàm dưới 017x025",
+    "price": 265000
+  },
+  {
+    "name": "300-021 Dây SS Ovoid hàm trên 017x025",
+    "price": 265000
+  },
+  {
+    "name": "300-018 Dây SS Ovoid hàm dưới 016x022",
+    "price": 265000
+  },
+  {
+    "name": "300-017 Dây SS Ovoid hàm trên 016x022",
+    "price": 265000
+  },
+  {
+    "name": "300-016 Dây SS Ovoid hàm dưới 016x016",
+    "price": 265000
+  },
+  {
+    "name": "300-015 Dây SS Ovoid hàm trên 016x016",
+    "price": 265000
+  },
+  {
+    "name": "300-012 Dây SS Ovoid hàm dưới 020",
+    "price": 265000
+  },
+  {
+    "name": "300-011 Dây SS Ovoid hàm trên 020",
+    "price": 265000
+  },
+  {
+    "name": "300-010 Dây SS Ovoid dưới 018",
+    "price": 265000
+  },
+  {
+    "name": "300-009 Dây SS Ovoid hàm trên 018",
+    "price": 265000
+  },
+  {
+    "name": "300-008 Dây SS Ovoid hàm dưới 016",
+    "price": 265000
+  },
+  {
+    "name": "300-007 Dây SS Ovoid hàm trên 016",
+    "price": 265000
+  },
+  {
+    "name": "297-824 Dây cong ngượcNitinolSE L 017x025",
+    "price": 1130000
+  },
+  {
+    "name": "297-823 Dây cong ngượcNitinolSE U 017x025",
+    "price": 1130000
+  },
+  {
+    "name": "297-822 Dây cong ngượcNitinolSE L 016x022",
+    "price": 1130000
+  },
+  {
+    "name": "297-821 Dây cong ngượcNitinolSE U 016x022",
+    "price": 1130000
+  },
+  {
+    "name": "211-360 Dây thẳng SS 036 (25 sợi/ống)",
+    "price": 7500000
+  },
+  {
+    "name": "017-552 M/cài Victory MBT SL 20 cái, 022",
+    "price": 1558000
+  },
+  {
+    "name": "017-452 M/cài Victory MBT SL 20 cái, 018",
+    "price": 1558000
+  },
+  {
+    "name": "5092 Bộ kit hoàn tất và đánh bóng kim cương Soflex, 10 cái",
+    "price": 1099000
+  },
+  {
+    "name": "5091 Đĩa đánh bóng kim cương Soflex, 15 cái màu hồng nhạt",
+    "price": 1099000
+  },
+  {
+    "name": "5090 Đĩa hoàn tất kim cương Soflex, 15 cái màu be",
+    "price": 1099000
+  },
+  {
+    "name": "56866 Mũi khoan chốt sợi size 3",
+    "price": 630000
+  },
+  {
+    "name": "56865 Mũi khoan chốt sợi size 2",
+    "price": 630000
+  },
+  {
+    "name": "56864 Mũi khoan chốt sợi size 1",
+    "price": 630000
+  },
+  {
+    "name": "56873 Mũi khoan chốt sợi size 0",
+    "price": 630000
+  },
+  {
+    "name": "56867 Mũi khoan chốt sợi Universal",
+    "price": 630000
+  },
+  {
+    "name": "56872 Chốt sợi size 0,màu trắng",
+    "price": 2215000
+  },
+  {
+    "name": "56863 Chốt sợi size 3,màu xanh",
+    "price": 2215000
+  },
+  {
+    "name": "56878 Xi măng gắn sứ Resin U200 màu A2",
+    "price": 2405000
+  },
+  {
+    "name": "56877 Xi măng gắn sứ Resin U200 màu Traslucent",
+    "price": 2405000
+  },
+  {
+    "name": "46954 Vật liệu mão tạm Protemp màu A1",
+    "price": 2245000
+  },
+  {
+    "name": "46956 Vật liệu mão tạm Protemp màu A2",
+    "price": 2245000
+  },
+  {
+    "name": "46957 Vật liệu mão tạm Protemp màu A3",
+    "price": 2245000
+  },
+  {
+    "name": "56900 Xi măng gắn G.I Ketac Cem Easy mix",
+    "price": 1187000
+  },
+  {
+    "name": "1471 A3.5 Composite Z250 XT nhộng 20 viên",
+    "price": 642000
+  },
+  {
+    "name": "12216 Kem đặc trị Clinpro Tooth Creme",
     "price": 3790000
+  },
+  {
+    "name": "804-160 Dụng cụ tháo dây M/cài tự buộc",
+    "price": 7500000
+  },
+  {
+    "name": "804-155 Dụng cụ đóng mở mắc cài Clarity Ultra SL",
+    "price": 7500000
+  },
+  {
+    "name": "Dụng cụ đóng mở mắc cài Clarity Ultra SL (804-155)",
+    "price": 7500000
+  },
+  {
+    "name": "117-100 M/cài sứ Gemini MBT, 20 cái, 022",
+    "price": 3890000
+  },
+  {
+    "name": "006-110 M/cài Clarity AD MBT U/L SL 20 022",
+    "price": 5467000
+  },
+  {
+    "name": "006-100 M/cài Clarity AD MBT U/L SL 20, 018",
+    "price": 5467000
+  },
+  {
+    "name": "9296-606 Dây Smartclip CL 012 hàm dưới",
+    "price": 570000
+  },
+  {
+    "name": "9296-605 Dây Smartclip CL 012 hàm trên",
+    "price": 570000
+  },
+  {
+    "name": "885-141 Forsus EZ2, 5bệnh nhân/kit",
+    "price": 8368000
+  },
+  {
+    "name": "006-113 M/cài Clarity AD MBT U/L SL12, 022",
+    "price": 3850000
+  },
+  {
+    "name": "006-118 M/cài Clarity AD MBT U SL 6, 022",
+    "price": 1900000
+  },
+  {
+    "name": "56862 Chốt sợi size 2,màu đỏ",
+    "price": 2215000
+  },
+  {
+    "name": "1470 A4 Composite Z250 XT màu A4 3g/ống",
+    "price": 397000
+  },
+  {
+    "name": "1470 A3.5 Composite Z250 XT màu A3.5 3g/ống",
+    "price": 397000
+  },
+  {
+    "name": "1470 A1 Composite Z250 XT màu A1 3g/ống",
+    "price": 397000
+  },
+  {
+    "name": "1470 A2 Composite Z250 XT màu A2 3g/ống",
+    "price": 397000
+  },
+  {
+    "name": "1470 A3 Composite Z250 XT màu A3 3g/ống",
+    "price": 397000
+  },
+  {
+    "name": "Vật liệu trám răng composite 3M™ Filtek™ Z250 XT, 1470B1, 3g/ống, Màu B1",
+    "price": 397000
+  },
+  {
+    "name": "Vật liệu trám răng composite 3M™ Filtek™ Z250 XT, 1470B2, 3g/ống, Màu B2",
+    "price": 397000
+  },
+  {
+    "name": "Vật liệu trám răng composite 3M™ Filtek™ Z250 XT, 1470B3, 3g/ống, Màu B3",
+    "price": 397000
+  },
+  {
+    "name": "Vật liệu trám răng composite 3M™ Filtek™ Z250 XT, 1470C2, 3g/ống, Màu C2",
+    "price": 397000
+  },
+  {
+    "name": "Vật liệu trám răng composite 3M™ Filtek™ Z250 XT, 1470D3, 3g/ống, Màu D3",
+    "price": 397000
+  },
+  {
+    "name": "Vật liệu trám răng composite 3M™ Filtek™ Z250 XT, 1470OA2, 3g/ống, Màu OA2",
+    "price": 397000
+  },
+  {
+    "name": "Vật liệu trám răng composite 3M™ Filtek™ Z250 XT, 1470OA3, 3g/ống, Màu OA3",
+    "price": 397000
+  },
+  {
+    "name": "4581-307 Dây Niti P/Triển sang bên 014 R28",
+    "price": 7500000
+  },
+  {
+    "name": "4581-308 Dây Niti P/Triển sang bên 014 R26",
+    "price": 7500000
+  },
+  {
+    "name": "4581-309 Dây Niti P/Triển sang bên 014 R24",
+    "price": 7500000
+  },
+  {
+    "name": "4581-313 Dây Niti P/Triển sang bên 018 R28",
+    "price": 7500000
+  },
+  {
+    "name": "4581-314 Dây Niti P/Triển sang bên 018 R26",
+    "price": 7500000
+  },
+  {
+    "name": "4581-315 Dây Niti P/Triển sang bên 018 R24",
+    "price": 7500000
+  },
+  {
+    "name": "4581-319 Dây Niti P/Triển sang bên 014X025 R28",
+    "price": 7500000
+  },
+  {
+    "name": "4582-307 Dây Niti P/Triển sang bên BETA 019X025 R28",
+    "price": 7500000
+  },
+  {
+    "name": "4582-308 Dây Niti P/Triển sang bên BETA 019X025 R26",
+    "price": 7500000
+  },
+  {
+    "name": "4582-309 Dây Niti P/Triển sang bên BETA 019X025 R24",
+    "price": 7500000
+  },
+  {
+    "name": "4585-301 Dây Niti P/Triển sang bên HA 014X025 R28",
+    "price": 7500000
+  },
+  {
+    "name": "4585-302 Dây Niti P/Triển sang bên HA 014x025 R26",
+    "price": 7500000
+  },
+  {
+    "name": "4585-303 Dây Niti P/Triển sang bên HA 014x025 R24",
+    "price": 7500000
+  },
+  {
+    "name": "4585-310 Dây Niti P/Triển sang bên HA 018X025 R28",
+    "price": 7500000
+  },
+  {
+    "name": "4585-311 Dây Niti P/Triển sang bên HA 018X025 R26",
+    "price": 7500000
+  },
+  {
+    "name": "4585-312 Dây Niti P/Triển sang bên HA 018x025 R24",
+    "price": 7500000
+  },
+  {
+    "name": "4585-313 Dây Niti P/Triển sang bên HA 019X025 R28",
+    "price": 7500000
+  },
+  {
+    "name": "4585-314 Dây Niti P/Triển sang bên HA 019X025 R26",
+    "price": 7500000
+  },
+  {
+    "name": "4585-315 Dây Niti P/Triển sang bên HA 019X025 R24",
+    "price": 7500000
+  },
+  {
+    "name": "56923 Xi măng RelyX Ultimate màu B0.5",
+    "price": 1772000
+  },
+  {
+    "name": "56921 Xi măng RelyX Ultimate màu A1",
+    "price": 1772000
+  },
+  {
+    "name": "56920 Xi măng RelyX Ultimate màu Translucent",
+    "price": 1772000
+  },
+  {
+    "name": "7018 A1B Composite QTH Z350 màu A1 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A3.5B Composite QTH Z350 màu A3.5 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "9293-818 Ddây Nitinol SE hàm dưới 014x025 D",
+    "price": 7500000
+  },
+  {
+    "name": "902W1 Khâu có ống, cleat răng 6 slot 018",
+    "price": 160000
+  },
+  {
+    "name": "1983RA Trục lắp đĩa đánh bóng 3 / Pkg",
+    "price": 499000
+  },
+  {
+    "name": "404-526 thun kéo liên hàm, lựcTB 4Oz 3/16\"",
+    "price": 615000
+  },
+  {
+    "name": "885-143 Forsus EZ2 Ngắn 25mm 1bệnh nhân",
+    "price": 2383000
+  },
+  {
+    "name": "885-144 Forsus EZ2 TB 29mm 1bệnh nhân",
+    "price": 2383000
+  },
+  {
+    "name": "885-145 Forsus EZ2 Lớn 32mm 1bệnh nhân",
+    "price": 2383000
+  },
+  {
+    "name": "12247 Vật liệu phủ Clinpro White 50 gói/hộp",
+    "price": 2703000
+  },
+  {
+    "name": "Mắc cài sứ tự buộc thẩm mỹ Unitek Clarity Ultra",
+    "price": 9990000
+  },
+  {
+    "name": "3M™ Filtek™ Easy Match Universal\nRestorative – Màu Trắng sáng - Bright",
+    "price": 850000
+  },
+  {
+    "name": "3M™ Filtek™ Easy Match Universal Restorative – Màu Tự nhiên - Natural",
+    "price": 850000
+  },
+  {
+    "name": "3M™ Filtek™ Easy Match Universal\nRestorative – Màu Ấm - Warm",
+    "price": 850000
+  },
+  {
+    "name": "56861 Chốt sợi size 1,màu vàng",
+    "price": 2215000
   }
 ]
