@@ -93,6 +93,8 @@
       }
     }
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 </head>
 <body>
   <div style="text-align:center; margin-bottom: 10px;">
@@ -208,12 +210,16 @@
   </script>
 <div style="margin-top: 20px;">
   <h3>Xuất đơn hàng ra văn bản</h3>
+   
   <label>Khách hàng: <input id="customer-name" type="text" placeholder="Tên khách hàng" style="width:100%"></label><br>
   <label>Địa chỉ: <input id="customer-address" type="text" placeholder="Địa chỉ" style="width:100%"></label><br>
   <label>SĐT: <input id="customer-phone" type="text" placeholder="Số điện thoại" style="width:100%"></label><br>
   <button onclick="exportText()">📄 Xuất ra văn bản</button>
   <button onclick="copyExportText()">📋 Sao chép</button>
+  <button onclick="exportTable()">🧾 Xuất bảng báo giá cho khách hàng</button>
   <div id="export-output" style="white-space: pre-wrap; background:#f4f4f4; padding:10px; margin-top:10px;"></div>
+  <div id="capture-area" style="background: white; padding: 20px; margin-top: 20px;"></div>
+    <button onclick="captureImage()">🖼️ Xuất ảnh báo giá</button>
 
 </div>
 
@@ -309,11 +315,23 @@ Tổng cộng: ${tong} đ`;
     <strong>Tổng cộng:</strong> ${tong} đ
   `;
 
-  document.getElementById('export-output').innerHTML = html;
+  document.getElementById('capture-area').innerHTML = html;
+}
+function captureImage() {
+  const captureElement = document.getElementById('capture-area');
+  html2canvas(captureElement).then(canvas => {
+    const imgData = canvas.toDataURL('image/png');
+
+    // Tạo link để tải
+    const link = document.createElement('a');
+    link.href = imgData;
+    link.download = 'bao_gia.png';
+    link.click();
+  });
 }
 
 </script>
-  <button onclick="exportTable()">🧾 Xuất bảng báo giá cho khách hàng</button>
+ 
 
 </body>
 </html>
