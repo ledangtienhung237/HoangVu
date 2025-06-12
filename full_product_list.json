@@ -1107,4 +1107,25 @@
     "name": "56861 Chốt sợi size 1,màu vàng",
     "price": 2215000
   }
+    {
+    "name": "7018 A1B Composite QTH Z350 màu A1B 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A2B Composite QTH Z350 màu A2B 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A3B Composite QTH Z350 màu A3B 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A3,5B Composite QTH Z350 màu A3,5B 4g/ống",
+    "price": 876000
+  },
+  {
+    "name": "7018 A4 Composite QTH Z350 màu A4 4g/ống",
+    "price": 876000
+  }
+
 ]
