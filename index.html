@@ -1,337 +1,224 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bảng Báo Giá</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bảng Báo Giá (Cải tiến)</title>
+  <meta name="color-scheme" content="light dark" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 10px;
-      margin: 0;
-    }
-    h2 {
-      text-align: center;
-    }
-    #product-search {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      margin-bottom: 12px;
-      box-sizing: border-box;
-    }
-    ul#search-results {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      background: #fff;
-      border: 1px solid #ccc;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-    ul#search-results li {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-    }
-    ul#search-results li:hover {
-      background: #f0f0f0;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 14px;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
-    td input {
-      width: 100%;
-      box-sizing: border-box;
-    }
-    button {
-      padding: 10px 16px;
-      margin-top: 10px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      font-size: 16px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    label, strong {
-      display: block;
-      margin-top: 15px;
-      font-size: 16px;
-    }
-    @media screen and (max-width: 600px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-      }
-      thead {
-        display: none;
-      }
-      tr {
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        border-radius: 6px;
-      }
-      td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 6px 0;
-      }
-      td:before {
-        content: attr(data-label);
-        font-weight: bold;
-      }
-    }
+    body {font-family: Arial, sans-serif; margin:0; padding:20px; background:#f7f7fb; color:#0f172a;}
+    .container {max-width: 900px; margin: auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); padding:20px;}
+    header {display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:20px;}
+    header img {max-height:60px;}
+    h1 {margin:0; font-size:24px; font-weight:700;}
+    .search-wrap {position: relative;}
+    .search {width:100%; padding:10px; border:1px solid #ccc; border-radius:8px;}
+    .results {position:absolute; top:110%; left:0; right:0; background:#fff; border:1px solid #ccc; border-radius:8px; max-height:200px; overflow:auto; list-style:none; margin:0; padding:0; z-index:1000;}
+    .results[hidden] {display:none;}
+    .results li {padding:8px 10px; cursor:pointer; border-bottom:1px solid #eee; display:flex; justify-content:space-between;}
+    .results li:hover {background:#f0f0f0;}
+    table {width:100%; border-collapse:collapse; margin-top:16px;}
+    th, td {border:1px solid #ddd; padding:8px; text-align:left;}
+    th {background:#f9fafb; position:sticky; top:0;}
+    td input {width:100%; padding:6px; border:1px solid #ccc; border-radius:6px;}
+    .toolbar {margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;}
+    .btn {padding:8px 14px; border:none; border-radius:6px; background:#2563eb; color:#fff; cursor:pointer;}
+    .btn:hover {background:#1d4ed8;}
+    .btn.ghost {background:#fff; color:#2563eb; border:1px solid #2563eb;}
+    .totals {margin-top:16px; padding:12px; border-top:2px solid #eee; display:flex; justify-content:space-between; align-items:center;}
+    .grand {font-size:18px; font-weight:bold;}
+    .note {font-size:13px; color:#555; margin-top:8px;}
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 </head>
 <body>
-  <div style="text-align:center; margin-bottom: 10px;">
-    <img src="logo.png" alt="Logo công ty" style="max-width: 150px; height: auto;">
-  </div>
-  <h2>Bảng Báo Giá</h2>
-  <input type="text" id="product-search" placeholder="Tìm sản phẩm...">
-  <ul id="search-results"></ul>
-  <table id="quote-table">
-    <thead>
-      <tr>
-        <th>Tên sản phẩm</th>
-        <th>Đơn giá</th>
-        <th>Số lượng</th>
-        <th>Chiết khấu dòng (%)</th>
-        <th>Thành tiền</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody id="product-body"></tbody>
-  </table>
+  <div class="container">
+    <header>
+      <img id="logo-img" src="ayas.png" alt="Logo Ayas">
+      <h1>Bảng Báo Giá</h1>
+    </header>
 
-  <button onclick="addRow()">➕ Thêm sản phẩm</button>
+    <div class="search-wrap">
+      <input id="product-search" class="search" placeholder="Tìm sản phẩm...">
+      <ul id="search-results" class="results" hidden></ul>
+    </div>
 
-  <label>Chiết khấu toàn đơn (%): <input id="order-discount" type="number" value="0"></label>
-  <strong>Tổng cộng: <span id="grand-total">0</span> đ</strong>
+    <div class="toolbar">
+      <button class="btn" id="btn-add-row">➕ Thêm sản phẩm</button>
+      <button class="btn ghost" id="btn-clear-all">🧹 Xóa tất cả</button>
+    </div>
 
-  <script>
-    const defaultProducts = JSON.parse(localStorage.getItem('fullProductList')) || [];
-
-    const searchInput = document.getElementById('product-search');
-    const resultsList = document.getElementById('search-results');
-
-    searchInput.addEventListener('input', function () {
-      const keyword = this.value.toLowerCase();
-      resultsList.innerHTML = '';
-      if (keyword.length === 0) return;
-      const results = defaultProducts.filter(p => p.name.toLowerCase().includes(keyword));
-      results.forEach(product => {
-        const li = document.createElement('li');
-        li.textContent = `${product.name} - ${product.price.toLocaleString('vi-VN')} đ`;
-        li.style.cursor = 'pointer';
-        li.onclick = () => {
-          addProductToTable(product);
-          resultsList.innerHTML = '';
-          searchInput.value = '';
-        };
-        resultsList.appendChild(li);
-      });
-    });
-
-    function addProductToTable(product) {
-      const tbody = document.getElementById("product-body");
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td data-label="Tên"><input type="text" value="${product.name}"></td>
-        <td data-label="Đơn giá"><input type="number" value="${product.price}"></td>
-        <td data-label="Số lượng"><input type="number" value="1"></td>
-        <td data-label="Chiết khấu"><input type="number" value="0"></td>
-        <td class="line-total" data-label="Thành tiền"></td>
-        <td data-label="Xóa"><button onclick="removeRow(this)">🗑️</button></td>
-      `;
-      tbody.appendChild(row);
-      row.querySelectorAll('input').forEach(input => input.addEventListener('input', updateTotals));
-      updateTotals();
-    }
-
-    function updateTotals() {
-      let total = 0;
-      const rows = document.querySelectorAll('#quote-table tbody tr');
-      rows.forEach(row => {
-        const price = parseFloat(row.cells[1].querySelector('input').value || 0);
-        const qty = parseInt(row.cells[2].querySelector('input').value || 0);
-        const discount = parseFloat(row.cells[3].querySelector('input').value || 0);
-        const lineTotal = price * qty * (1 - discount / 100);
-        row.cells[4].innerText = lineTotal.toLocaleString('vi-VN');
-        total += lineTotal;
-      });
-      const orderDiscount = parseFloat(document.getElementById('order-discount').value || 0);
-      total *= (1 - orderDiscount / 100);
-      document.getElementById('grand-total').innerText = total.toLocaleString('vi-VN');
-    }
-
-    function addRow() {
-      const tbody = document.querySelector('#quote-table tbody');
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td data-label="Tên"><input type="text"></td>
-        <td data-label="Đơn giá"><input type="number" value="0"></td>
-        <td data-label="Số lượng"><input type="number" value="1"></td>
-        <td data-label="Chiết khấu"><input type="number" value="0"></td>
-        <td class="line-total" data-label="Thành tiền"></td>
-        <td data-label="Xóa"><button onclick="removeRow(this)">🗑️</button></td>
-      `;
-      tbody.appendChild(row);
-      row.querySelectorAll('input').forEach(input => input.addEventListener('input', updateTotals));
-      updateTotals();
-    }
-
-    function removeRow(btn) {
-      btn.closest('tr').remove();
-      updateTotals();
-    }
-
-    document.getElementById('order-discount').addEventListener('input', updateTotals);
-
-    fetch('full_product_list.json')
-      .then(res => res.json())
-      .then(data => {
-        localStorage.setItem('fullProductList', JSON.stringify(data));
-        defaultProducts.push(...data);
-      });
-  </script>
-<div style="margin-top: 20px;">
-  <h3>Xuất đơn hàng ra văn bản</h3>
-   
-  <label>Khách hàng: <input id="customer-name" type="text" placeholder="Tên khách hàng" style="width:100%"></label><br>
-  <label>Địa chỉ: <input id="customer-address" type="text" placeholder="Địa chỉ" style="width:100%"></label><br>
-  <label>SĐT: <input id="customer-phone" type="text" placeholder="Số điện thoại" style="width:100%"></label><br>
-  <button onclick="exportText()">📄 Xuất ra văn bản</button>
-  <button onclick="copyExportText()">📋 Sao chép</button>
-  <button onclick="exportTable()">🧾 Xuất bảng báo giá cho khách hàng</button>
-  <div id="export-output" style="white-space: pre-wrap; background:#f4f4f4; padding:10px; margin-top:10px;"></div>
-  <div id="capture-area" style="background: white; padding: 20px; margin-top: 20px;"></div>
-    <button onclick="captureImage()">🖼️ Xuất ảnh báo giá</button>
-
-</div>
-
-<script>
-  function exportText() {
-    const name = document.getElementById('customer-name').value;
-    const address = document.getElementById('customer-address').value;
-    const phone = document.getElementById('customer-phone').value;
-
-    let text = `Tên khách hàng: ${name}
-Địa chỉ: ${address}
-Sđt: ${phone}
-
-`;
-    const rows = document.querySelectorAll('#quote-table tbody tr');
-    rows.forEach((row, index) => {
-      const ten = row.cells[0].querySelector('input').value;
-      const dongia = parseFloat(row.cells[1].querySelector('input').value || 0).toLocaleString('vi-VN');
-      const sl = row.cells[2].querySelector('input').value;
-      const ck = row.cells[3].querySelector('input').value;
-      const tt = row.cells[4].innerText;
-      text += `${index + 1}. ${ten}
-   Đơn giá: ${dongia} đ | SL: ${sl} | CK: ${ck}% | Thành tiền: ${tt} đ
-`;
-    });
-
-    const giam = document.getElementById('order-discount').value;
-    const tong = document.getElementById('grand-total').innerText;
-    text += `
-Chiết khấu toàn đơn: ${giam}%
-Tổng cộng: ${tong} đ`;
-
-    document.getElementById('export-output').innerText = text;
-  }
-  function copyExportText() {
-  const text = document.getElementById('export-output').innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    alert('Đã sao chép vào clipboard!');
-  }, err => {
-    alert('Không thể sao chép. Vui lòng thử lại.');
-  });
-}
-  function exportTable() {
-  const name = document.getElementById('customer-name').value;
-  const address = document.getElementById('customer-address').value;
-  const phone = document.getElementById('customer-phone').value;
-  const giam = document.getElementById('order-discount').value;
-  const tong = document.getElementById('grand-total').innerText;
-
-  let html = `
-    <strong>Tên khách hàng:</strong> ${name}<br>
-    <strong>Địa chỉ:</strong> ${address}<br>
-    <strong>SĐT:</strong> ${phone}<br><br>
-
-    <table border="1" cellpadding="6" cellspacing="0" style="border-collapse: collapse; width:100%; font-size:14px;">
+    <table id="quote-table">
       <thead>
         <tr>
-          <th>STT</th>
           <th>Tên sản phẩm</th>
-          <th>Đơn giá (đ)</th>
+          <th>Đơn giá</th>
           <th>Số lượng</th>
           <th>Chiết khấu (%)</th>
-          <th>Thành tiền (đ)</th>
+          <th>Thành tiền</th>
+          <th>Thao tác</th>
         </tr>
       </thead>
-      <tbody>
-  `;
+      <tbody id="product-body"></tbody>
+    </table>
 
-  const rows = document.querySelectorAll('#quote-table tbody tr');
-  rows.forEach((row, index) => {
-    const ten = row.cells[0].querySelector('input').value;
-    const dongia = parseFloat(row.cells[1].querySelector('input').value || 0).toLocaleString('vi-VN');
-    const sl = row.cells[2].querySelector('input').value;
-    const ck = row.cells[3].querySelector('input').value;
-    const tt = row.cells[4].innerText;
+    <div class="totals">
+      <div>
+        <span>Chiết khấu toàn đơn (%): <input id="order-discount" type="number" value="0" min="0" max="100" style="width:70px"></span>
+      </div>
+      <div class="grand">Tổng cộng: <span id="grand-total">0</span> đ</div>
+    </div>
 
-    html += `
-      <tr>
-        <td>${index + 1}</td>
-        <td>${ten}</td>
-        <td>${dongia}</td>
-        <td>${sl}</td>
-        <td>${ck}</td>
-        <td>${tt}</td>
-      </tr>
-    `;
-  });
+    <div class="toolbar">
+      <button class="btn" id="btn-export-text">📄 Xuất văn bản</button>
+      <button class="btn ghost" id="btn-copy-text">📋 Sao chép</button>
+      <button class="btn" id="btn-export-html">🧾 Xuất bảng</button>
+      <button class="btn ghost" id="btn-capture">🖼️ Xuất ảnh</button>
+    </div>
 
-  html += `
-      </tbody>
-    </table><br>
-    <strong>Chiết khấu toàn đơn:</strong> ${giam}%<br>
-    <strong>Tổng cộng:</strong> ${tong} đ
-  `;
+    <div id="export-output" class="note" style="white-space:pre-wrap;background:#f4f4f4;padding:10px;margin-top:10px;"></div>
+    <div id="capture-area" style="margin-top:20px;"></div>
+  </div>
 
-  document.getElementById('capture-area').innerHTML = html;
-}
-function captureImage() {
-  const captureElement = document.getElementById('capture-area');
-  html2canvas(captureElement).then(canvas => {
-    const imgData = canvas.toDataURL('image/png');
+  <script>
+    // ===== Utils =====
+    const VND = n => new Intl.NumberFormat('vi-VN').format(Math.round(Number(n)||0));
+    const clamp = (v,min,max)=> Math.min(max, Math.max(min, Number(v)||0));
+    const escAttr = s => String(s)
+      .replaceAll('&','&amp;')
+      .replaceAll('"','&quot;')
+      .replaceAll('<','&lt;')
+      .replaceAll('>','&gt;');
 
-    // Tạo link để tải
-    const link = document.createElement('a');
-    link.href = imgData;
-    link.download = 'bao_gia.png';
-    link.click();
-  });
-}
+    // ===== State =====
+    let productList = [];
 
-</script>
- 
+    // Load product list safely (avoids Unexpected token '<' if server returns HTML)
+    (async function loadProducts(){
+      try{
+        const r = await fetch('ayas.json', {cache:'no-store'});
+        const text = await r.text();
+        if(text.trim().startsWith('<')) throw new Error('Expected JSON, got HTML');
+        const data = JSON.parse(text);
+        if(Array.isArray(data)){
+          productList = data;
+          localStorage.setItem('fullProductList', JSON.stringify(data));
+        }
+      }catch(err){
+        console.warn('Không tải được ayas.json, dùng dữ liệu localStorage nếu có.', err);
+        try{ productList = JSON.parse(localStorage.getItem('fullProductList')||'[]'); }catch{ productList=[]; }
+      }
+    })();
 
+    const els={
+      search:document.getElementById('product-search'),
+      results:document.getElementById('search-results'),
+      tbody:document.getElementById('product-body'),
+      grand:document.getElementById('grand-total'),
+      orderDiscount:document.getElementById('order-discount')
+    };
+
+    function addRow(name='', price=0, qty=1, disc=0){
+      const tr=document.createElement('tr');
+      tr.innerHTML=`
+        <td><input class="name" value="${escAttr(name)}"></td>
+        <td><input type="number" class="price" value="${Math.max(0,Math.floor(Number(price)||0))}"></td>
+        <td><input type="number" class="qty" value="${Math.max(0,Math.floor(Number(qty)||1))}"></td>
+        <td><input type="number" class="disc" value="${clamp(disc,0,100)}" min="0" max="100" step="0.01"></td>
+        <td class="line-total">0</td>
+        <td><button class="btn ghost btn-del">🗑️</button></td>`;
+      els.tbody.appendChild(tr);
+      recalc();
+    }
+
+    function recalc(){
+      let total=0;
+      els.tbody.querySelectorAll('tr').forEach(tr=>{
+        const price=+tr.querySelector('.price').value||0;
+        const qty=+tr.querySelector('.qty').value||0;
+        const disc=clamp(tr.querySelector('.disc').value,0,100);
+        const line=Math.max(0, price*qty*(1-disc/100));
+        tr.querySelector('.line-total').textContent=VND(line);
+        total+=line;
+      });
+      const orderDisc=clamp(els.orderDiscount.value,0,100);
+      total*=1-orderDisc/100;
+      els.grand.textContent=VND(total);
+    }
+
+    els.tbody.addEventListener('input',recalc);
+    els.tbody.addEventListener('click',e=>{if(e.target.classList.contains('btn-del')){e.target.closest('tr').remove();recalc();}});
+    els.orderDiscount.addEventListener('input',recalc);
+
+    // Debounced search + safe rendering
+    let timer=0;
+    els.search.addEventListener('input',()=>{
+      clearTimeout(timer);
+      timer=setTimeout(()=>{
+        const kw=els.search.value.toLowerCase().trim();
+        els.results.innerHTML='';
+        if(!kw){els.results.hidden=true;return;}
+        const matches=(productList||[]).filter(p=>String(p.name).toLowerCase().includes(kw)).slice(0,50);
+        matches.forEach(p=>{
+          const li=document.createElement('li');
+          li.textContent=`${p.name} - ${VND(p.price)} đ`;
+          li.addEventListener('click',()=>{addRow(p.name,p.price,1,0);els.results.hidden=true;els.search.value='';});
+          els.results.appendChild(li);
+        });
+        els.results.hidden=!matches.length;
+      },120);
+    });
+
+    document.getElementById('btn-add-row').addEventListener('click',()=>addRow());
+    document.getElementById('btn-clear-all').addEventListener('click',()=>{els.tbody.innerHTML='';recalc();});
+
+    // ===== Export functions =====
+    document.getElementById('btn-export-text').addEventListener('click',()=>{
+      let text='';
+      els.tbody.querySelectorAll('tr').forEach((tr,i)=>{
+        const name=tr.querySelector('.name').value;
+        const price=VND(tr.querySelector('.price').value);
+        const qty=tr.querySelector('.qty').value;
+        const disc=tr.querySelector('.disc').value;
+        const tt=tr.querySelector('.line-total').textContent;
+        text+=`${i+1}. ${name}
+   Đơn giá: ${price} đ | SL: ${qty} | CK: ${disc}% | Thành tiền: ${tt} đ
+`;
+      });
+      text+=`
+Tổng cộng: ${els.grand.textContent} đ`;
+      document.getElementById('export-output').textContent=text;
+    });
+
+    document.getElementById('btn-copy-text').addEventListener('click',()=>{
+      navigator.clipboard.writeText(document.getElementById('export-output').textContent).then(()=>alert('Đã sao chép!'));
+    });
+
+    document.getElementById('btn-export-html').addEventListener('click',()=>{
+      document.getElementById('capture-area').innerHTML=document.getElementById('quote-table').outerHTML;
+    });
+
+    document.getElementById('btn-capture').addEventListener('click',async()=>{
+      const el=document.getElementById('quote-table');
+      const canvas=await html2canvas(el, {scale:2, backgroundColor:'#fff'});
+      const a=document.createElement('a');
+      a.href=canvas.toDataURL('image/png');
+      a.download='bao_gia.png';
+      a.click();
+    });
+
+    // ===== Smoke tests (non-intrusive) =====
+    (function tests(){
+      try{
+        console.assert(escAttr('"&<>`™')==='&quot;&amp;&lt;&gt;`™','escAttr failed');
+        const special='Clarity SL 20 cái, 018 "A" & <B>';
+        addRow(special, 12345, 1, 0);
+        const val=els.tbody.querySelector('.name').value;
+        console.assert(val===special,'addRow attribute escape failed');
+        els.tbody.innerHTML='';
+        console.log('[OK] smoke tests passed');
+      }catch(e){ console.warn('Smoke tests failed', e); }
+    })();
+  </script>
 </body>
 </html>
